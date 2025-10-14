@@ -35,6 +35,8 @@
             padding: 0 15px;
         }
         
+        /* ===== MOBILE FIRST STYLES ===== */
+        
         /* Header Styles */
         header {
             background-color: white;
@@ -53,29 +55,35 @@
         
         .header-top-content {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            flex-direction: column;
+            gap: 10px;
+            text-align: center;
         }
         
         .header-main {
             display: flex;
+            flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
             padding: 15px 0;
         }
         
         .logo {
+            flex: 1;
+            min-width: 100%;
             display: flex;
-            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-bottom: 15px;
         }
         
         .logo img {
-            height: 60px;
-            margin-right: 15px;
+            height: 50px;
+            margin-right: 10px;
         }
         
         .logo-text h1 {
-            font-size: 1.8rem;
+            font-size: 1.4rem;
             color: var(--primary);
         }
         
@@ -85,59 +93,57 @@
         }
         
         .desktop-nav {
-            display: flex;
-        }
-        
-        .desktop-nav ul {
-            display: flex;
-            list-style: none;
-        }
-        
-        .desktop-nav ul li {
-            margin-left: 20px;
-            position: relative;
-        }
-        
-        .desktop-nav ul li a {
-            text-decoration: none;
-            color: var(--dark);
-            font-weight: 500;
-            padding: 5px 10px;
-            transition: color 0.3s;
-            cursor: pointer;
-        }
-        
-        .desktop-nav ul li a:hover {
-            color: var(--primary);
-        }
-        
-        .dropdown-content {
             display: none;
-            position: absolute;
-            background-color: white;
-            min-width: 200px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-            z-index: 1;
-            border-top: 3px solid var(--primary);
-        }
-        
-        .dropdown-content a {
-            display: block;
-            padding: 12px 16px;
-            border-bottom: 1px solid #eee;
-            cursor: pointer;
-        }
-        
-        .dropdown:hover .dropdown-content {
-            display: block;
         }
         
         .mobile-menu-btn {
-            display: none;
+            display: block;
             font-size: 1.5rem;
             background: none;
             border: none;
             cursor: pointer;
+        }
+        
+        .mobile-nav {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+        
+        .mobile-nav.active {
+            display: block;
+        }
+        
+        .mobile-nav ul {
+            list-style: none;
+        }
+        
+        .mobile-nav ul li {
+            border-bottom: 1px solid #eee;
+        }
+        
+        .mobile-nav ul li a {
+            display: block;
+            padding: 15px 20px;
+            text-decoration: none;
+            color: var(--dark);
+            cursor: pointer;
+        }
+        
+        .mobile-nav .dropdown-content {
+            position: static;
+            display: none;
+            box-shadow: none;
+            border-top: none;
+        }
+        
+        .mobile-nav .dropdown.active .dropdown-content {
+            display: block;
         }
         
         /* Hero Section */
@@ -146,26 +152,27 @@
             background-size: cover;
             background-position: center;
             color: white;
-            padding: 100px 0;
+            padding: 60px 0;
             text-align: center;
         }
         
         .hero h2 {
-            font-size: 2.5rem;
+            font-size: 1.8rem;
             margin-bottom: 20px;
         }
         
         .hero p {
-            font-size: 1.2rem;
+            font-size: 1rem;
             max-width: 700px;
             margin: 0 auto 30px;
+            padding: 0 15px;
         }
         
         .btn {
             display: inline-block;
             background-color: var(--secondary);
             color: var(--dark);
-            padding: 12px 25px;
+            padding: 10px 20px;
             border-radius: 5px;
             text-decoration: none;
             font-weight: 600;
@@ -189,7 +196,7 @@
         
         /* Sections */
         .section {
-            padding: 80px 0;
+            padding: 50px 0;
         }
         
         .section-title {
@@ -198,7 +205,7 @@
         }
         
         .section-title h2 {
-            font-size: 2rem;
+            font-size: 1.6rem;
             color: var(--primary);
             position: relative;
             display: inline-block;
@@ -219,7 +226,7 @@
         /* Cards */
         .card-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: 1fr;
             gap: 30px;
         }
         
@@ -252,7 +259,7 @@
         }
         
         .card-content {
-            padding: 20px;
+            padding: 15px;
         }
         
         .card h3 {
@@ -276,7 +283,8 @@
             padding: 20px;
             margin-bottom: 20px;
             display: flex;
-            align-items: center;
+            flex-direction: column;
+            align-items: flex-start;
             box-shadow: 0 3px 10px rgba(0,0,0,0.08);
         }
         
@@ -286,8 +294,10 @@
             padding: 15px;
             text-align: center;
             min-width: 80px;
-            margin-right: 20px;
+            margin-right: 0;
+            margin-bottom: 15px;
             border-radius: 5px;
+            align-self: flex-start;
         }
         
         .event-date .day {
@@ -309,7 +319,7 @@
         /* Ministries Section */
         .ministries-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: 1fr;
             gap: 30px;
         }
         
@@ -342,9 +352,13 @@
         
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
+            grid-template-columns: 1fr;
+            gap: 30px;
             margin-bottom: 40px;
+        }
+        
+        .footer-column {
+            text-align: center;
         }
         
         .footer-column h3 {
@@ -361,7 +375,8 @@
             height: 2px;
             background-color: var(--secondary);
             bottom: 0;
-            left: 0;
+            left: 50%;
+            transform: translateX(-50%);
         }
         
         .footer-column ul {
@@ -387,6 +402,7 @@
             display: flex;
             gap: 15px;
             margin-top: 20px;
+            justify-content: center;
         }
         
         .social-links a {
@@ -424,12 +440,12 @@
         .page-header {
             background-color: var(--primary);
             color: white;
-            padding: 60px 0;
+            padding: 40px 0;
             text-align: center;
         }
         
         .page-header h1 {
-            font-size: 2.5rem;
+            font-size: 2rem;
             margin-bottom: 10px;
         }
         
@@ -437,6 +453,7 @@
             display: flex;
             justify-content: center;
             list-style: none;
+            flex-wrap: wrap;
         }
         
         .breadcrumb li {
@@ -472,7 +489,7 @@
         
         .form-control {
             width: 100%;
-            padding: 12px 15px;
+            padding: 10px 12px;
             border: 1px solid #ddd;
             border-radius: 5px;
             font-size: 1rem;
@@ -501,7 +518,7 @@
         /* Gallery */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            grid-template-columns: 1fr;
             gap: 15px;
         }
         
@@ -560,13 +577,14 @@
         
         .two-column {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
+            grid-template-columns: 1fr;
+            gap: 20px;
             align-items: center;
         }
         
         .leader-card {
             display: flex;
+            flex-direction: column;
             margin-bottom: 30px;
             background: white;
             border-radius: 8px;
@@ -575,7 +593,8 @@
         }
         
         .leader-img {
-            width: 150px;
+            width: 100%;
+            height: 200px;
             flex-shrink: 0;
         }
         
@@ -616,6 +635,24 @@
             padding: 15px;
             text-align: center;
             font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .calendar-nav {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        .calendar-nav:hover {
+            background-color: rgba(255, 255, 255, 0.2);
         }
         
         .calendar-grid {
@@ -623,12 +660,22 @@
             grid-template-columns: repeat(7, 1fr);
             gap: 1px;
             background: #eee;
+            font-size: 0.8rem;
+        }
+        
+        .calendar-day-header {
+            background: #f5f5f5;
+            padding: 10px 5px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 0.9rem;
         }
         
         .calendar-day {
             background: white;
-            padding: 10px;
-            min-height: 80px;
+            padding: 5px;
+            min-height: 60px;
+            position: relative;
         }
         
         .calendar-day.other-month {
@@ -637,7 +684,6 @@
         
         .calendar-day.has-event {
             background: #f0f8ff;
-            position: relative;
         }
         
         .calendar-day.has-event:after {
@@ -656,17 +702,33 @@
             margin-bottom: 5px;
         }
         
+        .calendar-event {
+            font-size: 0.7rem;
+            background: var(--secondary);
+            color: var(--dark);
+            padding: 2px 4px;
+            border-radius: 3px;
+            margin-top: 2px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        
         /* Tabs */
         .tabs {
             display: flex;
             border-bottom: 1px solid #ddd;
             margin-bottom: 20px;
+            flex-wrap: wrap;
         }
         
         .tab {
             padding: 10px 20px;
             cursor: pointer;
             border-bottom: 3px solid transparent;
+            flex: 1;
+            min-width: 120px;
+            text-align: center;
         }
         
         .tab.active {
@@ -719,7 +781,7 @@
         
         .resource-list {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            grid-template-columns: 1fr;
             gap: 20px;
         }
         
@@ -774,134 +836,134 @@
             display: none;
         }
 
-        /* Mobile Responsiveness */
-        @media (max-width: 768px) {
+        /* ===== TABLET STYLES ===== */
+        @media (min-width: 768px) {
             .header-top-content {
-                flex-direction: column;
-                gap: 10px;
-                text-align: center;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                text-align: left;
+                gap: 0;
             }
             
             .header-main {
-                flex-wrap: wrap;
+                flex-wrap: nowrap;
             }
             
             .logo {
-                flex: 1;
-                min-width: 100%;
-                justify-content: center;
-                text-align: center;
-                margin-bottom: 15px;
+                flex: 0 1 auto;
+                min-width: auto;
+                justify-content: flex-start;
+                text-align: left;
+                margin-bottom: 0;
             }
             
             .logo img {
-                height: 50px;
-                margin-right: 10px;
+                height: 60px;
+                margin-right: 15px;
             }
             
             .logo-text h1 {
-                font-size: 1.4rem;
-            }
-            
-            .hero {
-                padding: 60px 0;
-            }
-            
-            .hero h2 {
                 font-size: 1.8rem;
             }
             
+            .hero {
+                padding: 80px 0;
+            }
+            
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+            
             .hero p {
-                font-size: 1rem;
-                padding: 0 15px;
+                font-size: 1.1rem;
+                padding: 0;
             }
             
             .section {
-                padding: 50px 0;
+                padding: 70px 0;
             }
             
             .section-title h2 {
-                font-size: 1.6rem;
+                font-size: 1.8rem;
             }
             
             .card-grid,
             .ministries-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
             }
             
             .two-column {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            
-            .event-item {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            
-            .event-date {
-                margin-right: 0;
-                margin-bottom: 15px;
-                align-self: flex-start;
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr 1fr;
                 gap: 30px;
             }
             
+            .event-item {
+                flex-direction: row;
+                align-items: center;
+            }
+            
+            .event-date {
+                margin-right: 20px;
+                margin-bottom: 0;
+                align-self: center;
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
+            
             .footer-column {
-                text-align: center;
+                text-align: left;
             }
             
             .footer-column h3:after {
-                left: 50%;
-                transform: translateX(-50%);
+                left: 0;
+                transform: none;
             }
             
             .social-links {
-                justify-content: center;
+                justify-content: flex-start;
             }
             
             .page-header {
-                padding: 40px 0;
+                padding: 50px 0;
             }
             
             .page-header h1 {
-                font-size: 2rem;
+                font-size: 2.3rem;
             }
             
             .breadcrumb {
-                flex-wrap: wrap;
+                flex-wrap: nowrap;
             }
             
             .leader-card {
-                flex-direction: column;
+                flex-direction: row;
             }
             
             .leader-img {
-                width: 100%;
-                height: 200px;
+                width: 150px;
+                height: auto;
             }
             
             .tabs {
-                flex-wrap: wrap;
+                flex-wrap: nowrap;
             }
             
             .tab {
-                flex: 1;
-                min-width: 120px;
-                text-align: center;
+                flex: none;
+                min-width: auto;
             }
             
             .calendar-grid {
-                grid-template-columns: repeat(7, 1fr);
-                font-size: 0.8rem;
+                font-size: 0.9rem;
             }
             
             .calendar-day {
-                min-height: 60px;
-                padding: 5px;
+                min-height: 70px;
+                padding: 8px;
             }
             
             .gallery-grid {
@@ -909,35 +971,162 @@
             }
             
             .gallery-item {
-                height: 150px;
+                height: 180px;
             }
             
             .btn {
-                padding: 10px 20px;
-            }
-            
-            .mobile-nav ul li a {
-                padding: 12px 20px;
-            }
-            
-            .mobile-nav .dropdown-content a {
-                padding-left: 40px;
+                padding: 12px 25px;
             }
             
             .form-control {
-                padding: 10px 12px;
+                padding: 12px 15px;
             }
             
             .card-content {
-                padding: 15px;
+                padding: 20px;
             }
             
-            img {
-                max-width: 100%;
-                height: auto;
+            .resource-list {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
+        /* ===== LAPTOP/DESKTOP STYLES ===== */
+        @media (min-width: 992px) {
+            .desktop-nav {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: none;
+            }
+            
+            .mobile-nav {
+                display: none !important;
+            }
+            
+            .header-main {
+                position: relative;
+            }
+            
+            .desktop-nav ul {
+                display: flex;
+                list-style: none;
+            }
+            
+            .desktop-nav ul li {
+                margin-left: 20px;
+                position: relative;
+            }
+            
+            .desktop-nav ul li a {
+                text-decoration: none;
+                color: var(--dark);
+                font-weight: 500;
+                padding: 5px 10px;
+                transition: color 0.3s;
+                cursor: pointer;
+            }
+            
+            .desktop-nav ul li a:hover {
+                color: var(--primary);
+            }
+            
+            .dropdown-content {
+                display: none;
+                position: absolute;
+                background-color: white;
+                min-width: 200px;
+                box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+                z-index: 1;
+                border-top: 3px solid var(--primary);
+            }
+            
+            .dropdown-content a {
+                display: block;
+                padding: 12px 16px;
+                border-bottom: 1px solid #eee;
+                cursor: pointer;
+            }
+            
+            .dropdown:hover .dropdown-content {
+                display: block;
+            }
+            
+            .hero {
+                padding: 100px 0;
+            }
+            
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .section {
+                padding: 80px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .card-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+            
+            .ministries-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+            
+            .two-column {
+                gap: 40px;
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+            
+            .page-header {
+                padding: 60px 0;
+            }
+            
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .calendar-grid {
+                font-size: 1rem;
+            }
+            
+            .calendar-day {
+                min-height: 80px;
+                padding: 10px;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .gallery-item {
+                height: 200px;
+            }
+            
+            .resource-list {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+
+        /* ===== LARGE DESKTOP STYLES ===== */
+        @media (min-width: 1200px) {
+            .container {
+                padding: 0;
+            }
+        }
+
+        /* ===== SMALL MOBILE STYLES ===== */
         @media (max-width: 480px) {
             .hero h2 {
                 font-size: 1.5rem;
@@ -970,63 +1159,6 @@
             
             .logo-text h1 {
                 font-size: 1.2rem;
-            }
-        }
-
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .desktop-nav {
-                display: none;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            .header-main {
-                position: relative;
-            }
-            
-            .mobile-nav {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background-color: white;
-                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-                z-index: 1000;
-            }
-            
-            .mobile-nav.active {
-                display: block;
-            }
-            
-            .mobile-nav ul {
-                list-style: none;
-            }
-            
-            .mobile-nav ul li {
-                border-bottom: 1px solid #eee;
-            }
-            
-            .mobile-nav ul li a {
-                display: block;
-                padding: 15px 20px;
-                text-decoration: none;
-                color: var(--dark);
-                cursor: pointer;
-            }
-            
-            .mobile-nav .dropdown-content {
-                position: static;
-                display: none;
-                box-shadow: none;
-                border-top: none;
-            }
-            
-            .mobile-nav .dropdown.active .dropdown-content {
-                display: block;
             }
         }
     </style>
@@ -1730,49 +1862,12 @@
                                 <h2>Event Calendar</h2>
                                 <div class="calendar">
                                     <div class="calendar-header">
-                                        June 2024
+                                        <button class="calendar-nav" id="prev-month">&lt;</button>
+                                        <h3 id="current-month-year">June 2024</h3>
+                                        <button class="calendar-nav" id="next-month">&gt;</button>
                                     </div>
-                                    <div class="calendar-grid">
-                                        <div class="calendar-day other-month">28</div>
-                                        <div class="calendar-day other-month">29</div>
-                                        <div class="calendar-day other-month">30</div>
-                                        <div class="calendar-day other-month">31</div>
-                                        <div class="calendar-day">1</div>
-                                        <div class="calendar-day">2</div>
-                                        <div class="calendar-day">3</div>
-                                        <div class="calendar-day">4</div>
-                                        <div class="calendar-day">5</div>
-                                        <div class="calendar-day">6</div>
-                                        <div class="calendar-day">7</div>
-                                        <div class="calendar-day">8</div>
-                                        <div class="calendar-day">9</div>
-                                        <div class="calendar-day">10</div>
-                                        <div class="calendar-day">11</div>
-                                        <div class="calendar-day">12</div>
-                                        <div class="calendar-day">13</div>
-                                        <div class="calendar-day">14</div>
-                                        <div class="calendar-day has-event">15</div>
-                                        <div class="calendar-day">16</div>
-                                        <div class="calendar-day">17</div>
-                                        <div class="calendar-day">18</div>
-                                        <div class="calendar-day">19</div>
-                                        <div class="calendar-day">20</div>
-                                        <div class="calendar-day">21</div>
-                                        <div class="calendar-day has-event">22</div>
-                                        <div class="calendar-day">23</div>
-                                        <div class="calendar-day">24</div>
-                                        <div class="calendar-day">25</div>
-                                        <div class="calendar-day">26</div>
-                                        <div class="calendar-day">27</div>
-                                        <div class="calendar-day">28</div>
-                                        <div class="calendar-day has-event">29</div>
-                                        <div class="calendar-day">30</div>
-                                        <div class="calendar-day other-month">1</div>
-                                        <div class="calendar-day other-month">2</div>
-                                        <div class="calendar-day other-month">3</div>
-                                        <div class="calendar-day other-month">4</div>
-                                        <div class="calendar-day other-month">5</div>
-                                        <div class="calendar-day other-month">6</div>
+                                    <div class="calendar-grid" id="calendar-days">
+                                        <!-- Calendar days will be generated by JavaScript -->
                                     </div>
                                 </div>
                             </div>
@@ -2531,7 +2626,7 @@
                             <div class="card">
                                 <div class="card-content">
                                     <h3>What to Expect</h3>
-                                    <p>Our youth gatherings are welcoming, engaging, and focused on helping you grow in your relationship with God. You'll find a mix of games, small group discussions, prayer, and teaching relevant to your life as a young Catholic.</p>
+                                    <p>Our youth gatherings are welcoming, engaging, and focused on helping you grow in your relationship with God. You'll find a mix of games, small group discussions, a teaching relevant to teen life, prayer, and often some snacks! We create a welcoming environment where you can be yourself and grow in faith.</p>
                                 </div>
                             </div>
                             <div class="card">
@@ -3024,6 +3119,124 @@
                     mobileNav.classList.remove('active');
                     document.body.style.overflow = '';
                 }
+            });
+        });
+
+        // Live Calendar Implementation
+        document.addEventListener('DOMContentLoaded', function() {
+            // Sample events data
+            const eventsData = {
+                '2024-06-15': 'Youth Summer Retreat',
+                '2024-06-22': 'Community Service Day',
+                '2024-06-29': 'Youth Mass & Social',
+                '2024-07-05': 'Bible Study Summer Series',
+                '2024-07-12': 'Youth Movie Night',
+                '2024-07-20': 'Outreach Project',
+                '2024-07-27': 'Summer Social'
+            };
+
+            let currentDate = new Date();
+            let currentMonth = currentDate.getMonth();
+            let currentYear = currentDate.getFullYear();
+
+            const monthNames = ["January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"
+            ];
+
+            const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+            function renderCalendar(month, year) {
+                const calendarDays = document.getElementById('calendar-days');
+                const currentMonthYear = document.getElementById('current-month-year');
+                
+                // Clear previous calendar
+                calendarDays.innerHTML = '';
+                
+                // Set current month and year in header
+                currentMonthYear.textContent = `${monthNames[month]} ${year}`;
+                
+                // Create day headers
+                dayNames.forEach(day => {
+                    const dayHeader = document.createElement('div');
+                    dayHeader.className = 'calendar-day-header';
+                    dayHeader.textContent = day;
+                    calendarDays.appendChild(dayHeader);
+                });
+                
+                // Get first day of month and number of days in month
+                const firstDay = new Date(year, month, 1).getDay();
+                const daysInMonth = new Date(year, month + 1, 0).getDate();
+                
+                // Get previous month's days
+                const prevMonthLastDay = new Date(year, month, 0).getDate();
+                
+                // Add previous month's days
+                for (let i = firstDay - 1; i >= 0; i--) {
+                    const dayElement = document.createElement('div');
+                    dayElement.className = 'calendar-day other-month';
+                    dayElement.innerHTML = `<div class="day-number">${prevMonthLastDay - i}</div>`;
+                    calendarDays.appendChild(dayElement);
+                }
+                
+                // Add current month's days
+                for (let i = 1; i <= daysInMonth; i++) {
+                    const dayElement = document.createElement('div');
+                    dayElement.className = 'calendar-day';
+                    
+                    // Check if today
+                    const today = new Date();
+                    if (i === today.getDate() && month === today.getMonth() && year === today.getFullYear()) {
+                        dayElement.classList.add('today');
+                    }
+                    
+                    // Check for events
+                    const dateString = `${year}-${String(month + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`;
+                    if (eventsData[dateString]) {
+                        dayElement.classList.add('has-event');
+                        dayElement.innerHTML = `
+                            <div class="day-number">${i}</div>
+                            <div class="calendar-event">${eventsData[dateString]}</div>
+                        `;
+                    } else {
+                        dayElement.innerHTML = `<div class="day-number">${i}</div>`;
+                    }
+                    
+                    calendarDays.appendChild(dayElement);
+                }
+                
+                // Add next month's days
+                const totalCells = 42; // 6 rows x 7 days
+                const daysSoFar = firstDay + daysInMonth;
+                const nextMonthDays = totalCells - daysSoFar;
+                
+                for (let i = 1; i <= nextMonthDays; i++) {
+                    const dayElement = document.createElement('div');
+                    dayElement.className = 'calendar-day other-month';
+                    dayElement.innerHTML = `<div class="day-number">${i}</div>`;
+                    calendarDays.appendChild(dayElement);
+                }
+            }
+            
+            // Initial render
+            renderCalendar(currentMonth, currentYear);
+            
+            // Navigation event listeners
+            document.getElementById('prev-month').addEventListener('click', function() {
+                currentMonth--;
+                if (currentMonth < 0) {
+                    currentMonth = 11;
+                    currentYear--;
+                }
+                renderCalendar(currentMonth, currentYear);
+            });
+            
+            document.getElementById('next-month').addEventListener('click', function() {
+                currentMonth++;
+                if (currentMonth > 11) {
+                    currentMonth = 0;
+                    currentYear++;
+                }
+                renderCalendar(currentMonth, currentYear);
             });
         });
     </script>
